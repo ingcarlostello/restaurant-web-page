@@ -1,11 +1,13 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+// @components
+import Navbar from '../components/Navbar/Navbar';
+import Slides from '../components/Slides/Slides';
+
 
 export default function Home() {
   return (
-    <div>
-      <p className="text-3xl">Hola</p>
-    </div>
+    <>
+      <Navbar />
+      <Slides />
+    </>
   );
 }
