@@ -1,40 +1,51 @@
 import React from 'react';
 
+// @nextjs
+import Image from "next/image";
+
 // @react-slick
 import Slider from "react-slick";
 
 const Slides = () => {
 
   const settings = {
+    arrows: true,
+    autoplay: true,
+    autoplaySpeed: 6000,
     dots: true,
     infinite: true,
-    speed: 500,
-    slidesToShow: 1,
     slidesToScroll: 1,
+    slidesToShow: 1,
+    speed: 2000,
   };
 
   return (
     <>
       <div>
-        <h2> Single Item</h2>
         <Slider {...settings}>
-          <div className="h-10 bg-red-400">
-            <h3>1</h3>
+          <div className="w-full">
+            <Image
+              src="/img/hambur.jpg"
+              alt="Picture of the author"
+              width={2000}
+              height={1000}
+            />
           </div>
-          <div className="h-10 bg-red-400">
-            <h3>2</h3>
+          <div className="w-full">
+            <Image
+              src="/img/perro.jpg"
+              alt="Picture of the author"
+              width={2000}
+              height={1000}
+            />
           </div>
-          <div className="h-10 bg-red-400">
-            <h3>3</h3>
-          </div>
-          <div className="h-10 bg-red-400">
-            <h3>4</h3>
-          </div>
-          <div className="h-10 bg-red-400">
-            <h3>5</h3>
-          </div>
-          <div className="h-10 bg-red-400">
-            <h3>6</h3>
+          <div className="w-full">
+            <Image
+              src="/img/pizza.jpg"
+              alt="Picture of the author"
+              width={2000}
+              height={1000}
+            />
           </div>
         </Slider>
       </div>
