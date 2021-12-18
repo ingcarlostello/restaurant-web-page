@@ -21,7 +21,7 @@ const Slides = () => {
 
   return (
     <>
-      <div>
+      <div className='mx-7'>
         <Slider {...settings}>
           <div className="w-full">
             <Image
