@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+// @nextjs
+import Link from 'next/link';
+
 const Navbar = () => {
     const [openMenuVertical, setOpenMenuVertical] = useState(false);
 
@@ -24,33 +27,26 @@ const Navbar = () => {
               <div className="flex-1 flex justify-between sm:justify-center">
                 <div className="sm:block">
                   <div className="flex space-x-4 hidden sm:block">
-                    <a
-                      to="/"
+                    <Link
+                      href="/"
                       className="bg-black text-white px-3 py-2 rounded-md text-sm font-medium"
                       aria-current="page"
                     >
                       INICIO
-                    </a>
+                    </Link>
 
-                    <a
-                      to="/menu"
+                    <Link
+                      href="/categories"
                       className="font-bold text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                     >
                       MENU
-                    </a>
-
-                    <a
-                      to="/about"
-                      className="font-bold text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                    >
-                      SOBRE NOSOTROS
-                    </a>
-                    <a
-                      to="/contact"
+                    </Link>
+                    <Link
+                      href="/contact"
                       className="font-bold text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                     >
                       CONTACTO
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <button
@@ -83,41 +79,37 @@ const Navbar = () => {
               <div className="pt-2 pb-6 px-5">
                 <div className="mt-6">
                   <nav className="grid gap-y-8">
-                    <a
-                      onClick={handleMenuVertical}
-                      to="/"
+                    <Link
+                      passHref
+                      // onClick={handleMenuVertical}
+                      href="/"
                       className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
                     >
-                      <i className="fas fa-home"></i>
-                      <span className="ml-3 text-base font-medium text-gray-900">
-                        INICIO
-                      </span>
-                    </a>
-                    <article
+                      <div>
+                        <i className="fas fa-home"></i>
+                        <span className="ml-3 text-base font-medium text-gray-900">
+                          INICIO
+                        </span>
+                      </div>
+                    </Link>
+
+
+
+                    <Link
+                      passHref
                       onClick={handleMenuVertical}
-                      to="men-section"
+                      href="/women-section"
                       className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
                     >
-                      <i className="fas fa-male"></i>
-                      <span className="ml-3 text-base font-medium text-gray-900">
-                        MENU
-                      </span>
-                    </article>
-                    <a
-                      onClick={handleMenuVertical}
-                      to="women-section"
-                      className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
-                    >
-                      <i className="fas fa-female"></i>
-                      <span className="ml-3 text-base font-medium text-gray-900">
-                        SOBRE NOSOTROS
-                      </span>
-                    </a>
-                    <a
-                      to="shopping-car"
-                      className="cursor-pointer"
-                      onClick={handleMenuVertical}
-                    ></a>
+                      <div>
+                        <i className="fas fa-female"></i>
+                        <span className="ml-3 text-base font-medium text-gray-900">
+                          SOBRE NOSOTROS
+                        </span>
+                      </div>
+                    </Link>
+
+                  
                   </nav>
                 </div>
               </div>

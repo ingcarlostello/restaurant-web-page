@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // @nextjs
 import Image from "next/image";
@@ -6,7 +6,12 @@ import Image from "next/image";
 // @react-slick
 import Slider from "react-slick";
 
-const Slides = () => {
+// @urls
+import { getCarrusel } from '../../helper/urls';
+
+const Slides = ({ result }) => {
+
+
 
   const settings = {
     arrows: true,
@@ -52,5 +57,16 @@ const Slides = () => {
     </>
   );
 };
+
+// export async function getStaticProps() {
+//   let response = await fetch(getCarrusel);
+//   let result = await response.json();
+//   
+//   return {
+//     props: {
+//       result,
+//     },
+//   };
+// }
 
 export default Slides;
