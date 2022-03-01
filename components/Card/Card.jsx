@@ -2,7 +2,7 @@
 import React from 'react';
 
 // @Material UI
-import { Fab, Rating, Tooltip } from '@mui/material';
+import {  Rating } from '@mui/material';
 import Link from 'next/link';
 
 const Card = ({ urlProduct, nameProduct }) => {

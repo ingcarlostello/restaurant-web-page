@@ -1,59 +1,47 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect } from 'react';
 
 // @nextjs
 import Image from "next/image";
 
 // @react-slick
-import Slider from "react-slick";
+//import Slider from "react-slick";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+// import required modules
+import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
 
 // @urls
-import { getCarrusel } from '../../helper/urls';
+//import { getCarrusel } from '../../helper/urls';
 
 const Slides = ({ result }) => {
 
-
-
-  const settings = {
-    arrows: true,
-    autoplay: true,
-    autoplaySpeed: 6000,
-    dots: true,
-    infinite: true,
-    slidesToScroll: 1,
-    slidesToShow: 1,
-    speed: 2000,
-  };
-
   return (
     <>
-      <div className='mx-7'>
-        <Slider {...settings}>
-          <div className="w-full">
-            <Image
-              src="/img/hambur.jpg"
-              alt="Picture of the author"
-              width={2000}
-              height={1000}
-            />
-          </div>
-          <div className="w-full">
-            <Image
-              src="/img/perro.jpg"
-              alt="Picture of the author"
-              width={2000}
-              height={1000}
-            />
-          </div>
-          <div className="w-full">
-            <Image
-              src="/img/pizza.jpg"
-              alt="Picture of the author"
-              width={2000}
-              height={1000}
-            />
-          </div>
-        </Slider>
-      </div>
+      <Swiper
+        cssMode={true}
+        navigation={true}
+        pagination={true}
+        mousewheel={true}
+        keyboard={true}
+        modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+        className="mySwiper"
+      >
+        <SwiperSlide>
+          <img src="/img/perro.jpg" alt="perro" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="/img/pizza.jpg" alt="perro" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="/img/hambur.jpg" alt="perro" />
+        </SwiperSlide>
+      </Swiper>
     </>
   );
 };
