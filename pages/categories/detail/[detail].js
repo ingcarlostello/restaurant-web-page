@@ -1,12 +1,23 @@
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useState } from "react";
 import ProductDetail from "../../../components/ProductDetail/ProductDetail";
+import Reviews from "../../../components/Reviews/Reviews";
 
 import { getListOfFood, getUrlProduct } from "../../../helper/urls";
 
 const Detail = ({ burgersList, hotDogsList, drinksList }) => {
 
   const router = useRouter();
+
+   const [toggleModal, setToggleModal] = useState(true);
+
+   const openModal = () => {
+     if (toggleModal) {
+       setToggleModal(false);
+     } else {
+       setToggleModal(true);
+     }
+   };
 
    const nameProduct = (name) => {
      return name === router.query.detail;
@@ -38,8 +49,10 @@ const Detail = ({ burgersList, hotDogsList, drinksList }) => {
           respu.nameBurger === burger.urlFood && (
             <ProductDetail
               key={burger.id}
-              productName={burger.burgerName}
+              photo={burger.photo.url}
               productDescription={burger.description}
+              productId={burger.id}
+              productName={burger.burgerName}
             />
           )
       );
@@ -52,6 +65,8 @@ const Detail = ({ burgersList, hotDogsList, drinksList }) => {
               key={hotDog.id}
               productName={hotDog.hotDogName}
               productDescription={hotDog.description}
+              photo={hotDog.photo.url}
+              productId={hotDog.id}
             />
           )
       );
@@ -64,6 +79,7 @@ const Detail = ({ burgersList, hotDogsList, drinksList }) => {
               key={drink.id}
               productName={drink.drinkName}
               productDescription={drink.description}
+              photo={drink.photo.url}
             />
           )
       );
@@ -71,7 +87,12 @@ const Detail = ({ burgersList, hotDogsList, drinksList }) => {
 
    return (
      <>
-       <p>desde detalles</p>
+     <h1>holaaaaaaaaaaaaaaaaaaaaaaaaaaa</h1>
+       <Reviews
+         toggleModal={toggleModal}
+         openModal={openModal}
+         productId={3}
+       />
      </>
    );
   

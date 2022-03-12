@@ -1,4 +1,5 @@
 // @components
+import Head from "next/head";
 import Menu from "../components/Menu/Menu";
 import Slides from "../components/Slides/Slides";
 

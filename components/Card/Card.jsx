@@ -5,7 +5,7 @@ import React from 'react';
 import {  Rating } from '@mui/material';
 import Link from 'next/link';
 
-const Card = ({ urlProduct, nameProduct }) => {
+const Card = ({ urlProduct, nameProduct, photo }) => {
   return (
     <>
       <div className="mb-6 mx-6 rounded-lg w-64 shadow-lg hover:shadow-xl transition duration-500">
@@ -13,7 +13,7 @@ const Card = ({ urlProduct, nameProduct }) => {
           <div className="rounded-t-lg h-56 w-full flex justify-center items-center overflow-hidden">
             <img
               className="object-cover h-56 w-full"
-              src="/img/hamburguesa1.jpg"
+              src={`${process.env.NEXT_PUBLIC_API_URL}${photo}`}
               alt=""
             />
           </div>

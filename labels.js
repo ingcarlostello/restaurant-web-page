@@ -1,4 +1,6 @@
 export const labels = {
     categories: 'categories',
-    categorias: 'categorias'
+    categorias: 'categorias',
+    contacto: 'contacto',
+    contact: 'contact',
 }

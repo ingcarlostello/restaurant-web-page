@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 
 // @nextjs
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Navbar = () => {
+   const router = useRouter();
     const [openMenuVertical, setOpenMenuVertical] = useState(false);
 
     const handleMenuVertical = () => {
@@ -15,7 +17,7 @@ const Navbar = () => {
     };
     return (
       <>
-        <nav className="px-6 bg-slate-50 drop-shadow-lg">
+        <nav className="px-6 bg-white drop-shadow-lg">
           <div className="max-w-7xl mx-auto">
             <div className="relative flex items-center justify-between h-16">
               {/* ---logo--- */}
@@ -27,26 +29,35 @@ const Navbar = () => {
               <div className="flex-1 flex justify-between sm:justify-center">
                 <div className="sm:block">
                   <div className="flex space-x-4 hidden sm:block">
-                    <Link
-                      href="/"
-                      className="bg-black text-white px-3 py-2 rounded-md text-sm font-medium"
-                      aria-current="page"
+                    <a
+                      className={
+                        router.pathname == "/"
+                          ? "p-3 text-white bg-red-500 rounded-lg"
+                          : "p-3 text-black hover:bg-red-500 hover:text-white rounded-lg"
+                      }
                     >
-                      INICIO
-                    </Link>
+                      <Link href="/">INICIO</Link>
+                    </a>
 
-                    <Link
-                      href="/categories"
-                      className="font-bold text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    <a
+                      className={
+                        router.pathname == "/categories"
+                          ? "p-3 text-white bg-red-500 rounded-lg"
+                          : "p-3 text-black hover:bg-red-500 hover:text-white rounded-lg"
+                      }
                     >
-                      MENU
-                    </Link>
-                    <Link
-                      href="/contact"
-                      className="font-bold text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      <Link href="/categories">MENU</Link>
+                    </a>
+
+                    <a
+                      className={
+                        router.pathname == "/contact"
+                          ? "p-3 text-white bg-red-500 rounded-lg"
+                          : "p-3 text-black hover:bg-red-500 hover:text-white rounded-lg"
+                      }
                     >
-                      CONTACTO
-                    </Link>
+                      <Link href="/contact">CONTACTO</Link>
+                    </a>
                   </div>
                 </div>
                 <button
@@ -93,8 +104,6 @@ const Navbar = () => {
                       </div>
                     </Link>
 
-
-
                     <Link
                       passHref
                       onClick={handleMenuVertical}
@@ -108,8 +117,6 @@ const Navbar = () => {
                         </span>
                       </div>
                     </Link>
-
-                  
                   </nav>
                 </div>
               </div>

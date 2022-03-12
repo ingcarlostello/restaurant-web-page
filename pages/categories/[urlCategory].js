@@ -7,12 +7,17 @@ import { getCategoryName, nameProduct } from "../../helper/urls";
 const Categoria = ({ category, burgersList, hotDogsList, drinkList }) => {
 
   const router = useRouter()
-  console.log(router);
+
+  console.log(burgersList);
+  console.log(hotDogsList);
 
   const allCategories = () => {
     const burger = burgersList.map(getCategoryName);
     const hotDog = hotDogsList.map(getCategoryName);
     const drink = drinkList.map(getCategoryName);
+
+    console.log(burger);
+    console.log(hotDog);
 
     return {
       burger: nameProduct(burger),
@@ -23,6 +28,7 @@ const Categoria = ({ category, burgersList, hotDogsList, drinkList }) => {
 
   const respu = allCategories();
 
+
   const listado = () => {
     switch (category.categoryName) {
       case respu.burger:
@@ -31,6 +37,7 @@ const Categoria = ({ category, burgersList, hotDogsList, drinkList }) => {
             key={burger.id}
             urlProduct={burger.urlFood}
             nameProduct={burger.burgerName}
+            photo={burger.photo.url}
           />
         ));
         return (
@@ -45,6 +52,7 @@ const Categoria = ({ category, burgersList, hotDogsList, drinkList }) => {
             key={hotDog.id}
             urlProduct={hotDog.urlFood}
             nameProduct={hotDog.hotDogName}
+            photo={hotDog.photo.url}
           />
         ));
         return (
@@ -56,7 +64,11 @@ const Categoria = ({ category, burgersList, hotDogsList, drinkList }) => {
       case respu.drink:
         let allDrinks = drinkList.map((drink) => (
           <div key={drink.id} className="mt-10">
-            <Card urlProduct={drink.urlFood} nameProduct={drink.drinkName} />
+            <Card
+              urlProduct={drink.urlFood}
+              nameProduct={drink.drinkName}
+              photo={drink.photo.url}
+            />
           </div>
         ));
         return (
