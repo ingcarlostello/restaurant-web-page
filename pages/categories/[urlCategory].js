@@ -1,24 +1,22 @@
-
-import { useRouter } from 'next/router';
-import React from 'react';
-import Card from '../../components/Card/Card';
+import { useRouter } from "next/router";
+import React from "react";
+import Card from "../../components/Card/Card";
+import { sumaEstrellas } from "../../helper/starAverage";
 import { getCategoryName, nameProduct } from "../../helper/urls";
 
-const Categoria = ({ category, burgersList, hotDogsList, drinkList }) => {
-
-  const router = useRouter()
-
-  console.log(burgersList);
-  console.log(hotDogsList);
+const Categoria = ({
+  burgersList,
+  category,
+  drinkList,
+  hotDogsList,
+  reviewBurgersList,
+}) => {
+  const router = useRouter();
 
   const allCategories = () => {
     const burger = burgersList.map(getCategoryName);
     const hotDog = hotDogsList.map(getCategoryName);
     const drink = drinkList.map(getCategoryName);
-
-    console.log(burger);
-    console.log(hotDog);
-
     return {
       burger: nameProduct(burger),
       hotDog: nameProduct(hotDog),
@@ -28,16 +26,71 @@ const Categoria = ({ category, burgersList, hotDogsList, drinkList }) => {
 
   const respu = allCategories();
 
+  const allDataBurger = burgersList.map((burger) => {
+    let infoBurger = {
+      description: burger.description,
+      photo: burger.photo.url,
+      id: burger.id,
+      name: burger.burgerName,
+      price: burger.price,
+      urlFood: burger.urlFood,
+      points: burger.review_burgers.map((stars) => {
+        return stars.value;
+      }),
+      reviews: burger.review_burgers.map((reviews) => {
+        return reviews.description;
+      }),
+    };
+    let suma = infoBurger.points.reduce(sumaEstrellas);
+    let promedio = suma / infoBurger.points.length;
+
+    infoBurger.promedio = promedio;
+    return infoBurger;
+  });
+
+    console.log(burgersList);
+
+  console.log(hotDogsList);
+
+  const allDataHotDogs = hotDogsList.map((hotDog) => {
+    let infoHotDog = {
+      category: hotDog.category.urlCategory,
+      description: hotDog.description,
+      photo: hotDog.photo.url,
+      id: hotDog.id,
+      name: hotDog.hotDogName,
+      price: hotDog.price,
+      urlFood: hotDog.urlFood,
+      points: hotDog.review_hot_dogs?.map((stars) => {
+        return stars.value;
+      }),
+      reviews: hotDog.review_hot_dogs?.map((reviews) => {
+        return {
+          reviews: reviews.description,
+          points: reviews.value,
+          title: reviews.title,
+          clientName: reviews.clientName,
+        };
+      }),
+    };
+    let suma = infoHotDog.points.length > 0 && infoHotDog.points?.reduce(sumaEstrellas);
+    let promedio = suma / infoHotDog.points?.length;
+
+    infoHotDog.promedio = promedio;
+    return infoHotDog;
+  });
 
   const listado = () => {
     switch (category.categoryName) {
       case respu.burger:
-        let  allBurgers = burgersList.map((burger) => (
+        let allBurgers = allDataBurger.map((burger) => (
           <Card
+            average={burger.promedio}
             key={burger.id}
+            nameProduct={burger.name}
+            photo={burger.photo}
+            price={burger.price}
             urlProduct={burger.urlFood}
-            nameProduct={burger.burgerName}
-            photo={burger.photo.url}
           />
         ));
         return (
@@ -47,12 +100,14 @@ const Categoria = ({ category, burgersList, hotDogsList, drinkList }) => {
         );
 
       case respu.hotDog:
-        let allHotDogs = hotDogsList.map((hotDog) => (
+        let allHotDogs = allDataHotDogs.map((hotDog) => (
           <Card
+            average={hotDog.promedio}
             key={hotDog.id}
+            nameProduct={hotDog.name}
+            photo={hotDog.photo}
+            price={hotDog.price}
             urlProduct={hotDog.urlFood}
-            nameProduct={hotDog.hotDogName}
-            photo={hotDog.photo.url}
           />
         ));
         return (
@@ -75,10 +130,10 @@ const Categoria = ({ category, burgersList, hotDogsList, drinkList }) => {
           <div className="grid gap-4 mt-9 place-items-center sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {allDrinks}
           </div>
-        );    
+        );
     }
-  }
-  
+  };
+
   return (
     <>
       <div className="w-full h-64 text-6xl text-white bg-gray-600 grid place-items-center">
@@ -89,7 +144,7 @@ const Categoria = ({ category, burgersList, hotDogsList, drinkList }) => {
   );
 };
 
-export async function getStaticPaths(){
+export async function getStaticPaths() {
   //hago peticion get para obtener todas las categorias
   const url = `${process.env.API_URL}/categories`;
   const response = await fetch(url);
@@ -128,6 +183,8 @@ export async function getStaticProps({ params: { urlCategory } }) {
   let urlListDrinks = `${process.env.API_URL}/drinks`;
   const responseListDrinks = await fetch(urlListDrinks);
   const drinkList = await responseListDrinks.json();
+
+ 
 
   /**
    * *Como esta url: `${process.env.API_URL}/categories?urlCategory=${urlCategory}`; regresa 1 array de 1 solo item;

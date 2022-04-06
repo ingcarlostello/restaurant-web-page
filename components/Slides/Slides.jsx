@@ -14,7 +14,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 // import required modules
-import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
+import { Autoplay, Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
 
 // @urls
 //import { getCarrusel } from '../../helper/urls';
@@ -24,13 +24,19 @@ const Slides = ({ result }) => {
   return (
     <>
       <Swiper
+        autoplay={{
+          delay: 10000,
+          disableOnInteraction: false,
+        }}
+        className="mySwiper"
         cssMode={true}
+        keyboard={true}
+        loop={true}
+        modules={[Autoplay, Navigation, Pagination, Mousewheel, Keyboard]}
+        mousewheel={true}
         navigation={true}
         pagination={true}
-        mousewheel={true}
-        keyboard={true}
-        modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-        className="mySwiper"
+        spaceBetween={30}
       >
         <SwiperSlide>
           <img src="/img/perro.jpg" alt="perro" />

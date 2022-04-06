@@ -32,8 +32,8 @@ const Navbar = () => {
                     <a
                       className={
                         router.pathname == "/"
-                          ? "p-3 text-white bg-red-500 rounded-lg"
-                          : "p-3 text-black hover:bg-red-500 hover:text-white rounded-lg"
+                          ? "p-3 text-white bg-red-500 rounded"
+                          : "p-3 text-black hover:bg-red-500 hover:text-white rounded"
                       }
                     >
                       <Link href="/">INICIO</Link>
@@ -42,8 +42,8 @@ const Navbar = () => {
                     <a
                       className={
                         router.pathname == "/categories"
-                          ? "p-3 text-white bg-red-500 rounded-lg"
-                          : "p-3 text-black hover:bg-red-500 hover:text-white rounded-lg"
+                          ? "p-3 text-white bg-red-500 rounded"
+                          : "p-3 text-black hover:bg-red-500 hover:text-white rounded"
                       }
                     >
                       <Link href="/categories">MENU</Link>
@@ -52,8 +52,8 @@ const Navbar = () => {
                     <a
                       className={
                         router.pathname == "/contact"
-                          ? "p-3 text-white bg-red-500 rounded-lg"
-                          : "p-3 text-black hover:bg-red-500 hover:text-white rounded-lg"
+                          ? "p-3 text-white bg-red-500 rounded"
+                          : "p-3 text-black hover:bg-red-500 hover:text-white rounded"
                       }
                     >
                       <Link href="/contact">CONTACTO</Link>

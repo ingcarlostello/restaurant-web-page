@@ -5,8 +5,13 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
 
-const Reviews = ({ openModal, toggleModal, productId }) => {
-  console.log(productId);
+import { useRouter } from "next/router";
+
+const Reviews = ({ openModal, toggleModal, productId, category }) => {
+
+
+
+
   const [reviewForm, setReviewForm] = useState({
     clientName: "",
     title: "",
@@ -31,11 +36,23 @@ const Reviews = ({ openModal, toggleModal, productId }) => {
 
   const cancelModal = () => {
     openModal();
+    setReviewForm({
+      clientName: "",
+      title: "",
+      description: "",
+      value: null,
+      burger: {
+        id: null,
+      },
+      hot_dog: {
+        id: null,
+      },
+    });
   };
 
   const sendReview = async (review) => {
-    const feedback = fetch("http://localhost:1337/review-burgers", {
-    //const feedback = fetch("http://localhost:1337/review-hot-dogs", {
+    if (category === 'hamburguesas') {
+      const feedback = fetch("http://localhost:1337/review-burgers", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -43,6 +60,39 @@ const Reviews = ({ openModal, toggleModal, productId }) => {
         },
         body: JSON.stringify(review),
       });
+      setReviewForm({
+        clientName: "",
+        title: "",
+        description: "",
+        value: null,
+        burger: {
+          id: null,
+        },
+      });
+      openModal();
+    };
+    
+    if (category === 'perros') {
+      const feedback = fetch("http://localhost:1337/review-hot-dogs", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(review),
+      });
+      setReviewForm({
+        clientName: "",
+        title: "",
+        description: "",
+        value: null,
+        hot_dog: {
+          id: null,
+        },
+      });
+      openModal();
+    }
+     
   };
 
   return (
