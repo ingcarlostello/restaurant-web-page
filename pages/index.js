@@ -7,8 +7,10 @@ import Slides from "../components/Slides/Slides";
 export default function Home({ categories }) {
   return (
     <>
-      <Slides />
-      <Menu categories={categories} />
+      <div className="bg-slate-50 pb-28 font-nunito">
+        <Slides />
+        <Menu categories={categories} />
+      </div>
     </>
   );
 }

@@ -21,6 +21,8 @@ const ProductDetail = ({
 }) => {
   const [toggleModal, setToggleModal] = useState(false);
 
+  console.log("prodcut detail", category);
+
   const openModal = () => {
     if (toggleModal) {
       setToggleModal(false);
@@ -51,7 +53,7 @@ const ProductDetail = ({
                     readOnly
                   />
                 </span>
-                <span className="ml-2">{average.toFixed(1)}</span>
+                <span className="ml-2">{average?.toFixed(1)}</span>
               </div>
               <p className="mt-8 whitespace-pre-line">{productDescription}</p>
               <div className="mt-12">

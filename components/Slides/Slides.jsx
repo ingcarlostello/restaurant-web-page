@@ -1,11 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from "react";
 
-// @nextjs
-import Image from "next/image";
-
-// @react-slick
-//import Slider from "react-slick";
+// @Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -17,50 +13,50 @@ import "swiper/css/pagination";
 import { Autoplay, Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
 
 // @urls
-//import { getCarrusel } from '../../helper/urls';
+import { getCarruselImage } from "../../helper/urls";
 
-const Slides = ({ result }) => {
+const Slides = () => {
+
+  const [carouselPhoto, setCarouselPhoto] = useState();
+
+  useEffect(() => {
+    getCarruselImage().then(function (value) {
+     setCarouselPhoto(value.Carousel);
+    });
+  }, [])  
 
   return (
     <>
-      <Swiper
-        autoplay={{
-          delay: 10000,
-          disableOnInteraction: false,
-        }}
-        className="mySwiper"
-        cssMode={true}
-        keyboard={true}
-        loop={true}
-        modules={[Autoplay, Navigation, Pagination, Mousewheel, Keyboard]}
-        mousewheel={true}
-        navigation={true}
-        pagination={true}
-        spaceBetween={30}
-      >
-        <SwiperSlide>
-          <img src="/img/perro.jpg" alt="perro" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/img/pizza.jpg" alt="perro" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/img/hambur.jpg" alt="perro" />
-        </SwiperSlide>
-      </Swiper>
+      <div className="px-8">
+        <Swiper
+          autoplay={{
+            delay: 10000,
+            disableOnInteraction: false,
+          }}
+          className="mySwiper"
+          cssMode={true}
+          keyboard={true}
+          loop={true}
+          modules={[Autoplay, Navigation, Pagination, Mousewheel, Keyboard]}
+          mousewheel={true}
+          navigation={true}
+          pagination={true}
+          spaceBetween={30}
+        >
+          {carouselPhoto?.map((item) => (
+            <SwiperSlide key={item.id}>
+              <img
+                src={`${process.env.NEXT_PUBLIC_API_URL}${item.url}`}
+                alt="perro"
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </>
   );
 };
 
-// export async function getStaticProps() {
-//   let response = await fetch(getCarrusel);
-//   let result = await response.json();
-//   
-//   return {
-//     props: {
-//       result,
-//     },
-//   };
-// }
+
 
 export default Slides;

@@ -9,6 +9,8 @@ import { useRouter } from "next/router";
 
 const Reviews = ({ openModal, toggleModal, productId, category }) => {
 
+  console.log('liena 12 category-->', category);
+
 
 
 
@@ -21,6 +23,9 @@ const Reviews = ({ openModal, toggleModal, productId, category }) => {
       id: productId,
     },
     hot_dog: {
+      id: productId
+    },
+    drink:{
       id: productId
     }
   });
@@ -47,10 +52,35 @@ const Reviews = ({ openModal, toggleModal, productId, category }) => {
       hot_dog: {
         id: null,
       },
+      drink: {
+        id: null,
+      },
     });
   };
 
   const sendReview = async (review) => {
+
+    if(category === 'bebidas'){
+       const feedback = fetch("http://localhost:1337/review-drinks", {
+         method: "POST",
+         headers: {
+           "Content-Type": "application/json",
+           Accept: "application/json",
+         },
+         body: JSON.stringify(review),
+       });
+       setReviewForm({
+         clientName: "",
+         title: "",
+         description: "",
+         value: null,
+         drink: {
+           id: null,
+         },
+       });
+       openModal();
+    }
+
     if (category === 'hamburguesas') {
       const feedback = fetch("http://localhost:1337/review-burgers", {
         method: "POST",
@@ -65,7 +95,7 @@ const Reviews = ({ openModal, toggleModal, productId, category }) => {
         title: "",
         description: "",
         value: null,
-        burger: {
+        buerger: {
           id: null,
         },
       });

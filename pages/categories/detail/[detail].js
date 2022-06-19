@@ -103,6 +103,37 @@ const Detail = ({ burgersList, hotDogsList, drinksList }) => {
      return infoHotDog;
    });
 
+
+     const allDataDrinks = drinksList.map((drink) => {
+       let infoDrink = {
+         category: drink.category.urlCategory,
+         description: drink.description,
+         photo: drink.photo.url,
+         id: drink.id,
+         name: drink.drinkName,
+         price: drink.price,
+         urlFood: drink.urlFood,
+         points: drink.review_drinks?.map((stars) => {
+           return stars.value;
+         }),
+         reviews: drink.review_drinks?.map((reviews) => {
+           return {
+             reviews: reviews.description,
+             points: reviews.value,
+             title: reviews.title,
+             clientName: reviews.clientName,
+           };
+         }),
+       };
+       let suma =
+         infoDrink.points.length > 0 &&
+         infoDrink.points?.reduce(sumaEstrellas);
+       let promedio = suma / infoDrink.points?.length;
+
+       infoDrink.promedio = promedio;
+       return infoDrink;
+     });
+
   switch (router.query.detail) {
     case respu.nameBurger:
       return allDataBurger.map(
@@ -142,14 +173,19 @@ const Detail = ({ burgersList, hotDogsList, drinksList }) => {
       );
 
     case respu.nameDrink:
-      return drinksList.map(
+      return allDataDrinks.map(
         (drink) =>
           respu.nameDrink === drink.urlFood && (
             <ProductDetail
+               category={drink.category}
               key={drink.id}
-              productName={drink.drinkName}
+              photo={drink.photo}
               productDescription={drink.description}
-              photo={drink.photo.url}
+              productId={drink.id}
+              productName={drink.name}
+              reviews={drink.reviews}
+              price={drink.price}
+              average={drink.promedio}
             />
           )
       );

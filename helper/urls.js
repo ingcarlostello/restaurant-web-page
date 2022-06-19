@@ -1,16 +1,11 @@
 export const server = "http://localhost:1337";
-export const getCarrusel = `${server}/api/carrusels?populate=Photo`;
+export const getCarrusel = `${server}/carousel`;
 
 
 export const getCarruselImage = async () => {
   let response = await fetch(getCarrusel);
   let result = await response.json();
-
-  return {
-    props: {
-      result,
-    },
-  };
+  return result
 };
 
 export const getListOfFood = async (url) => {

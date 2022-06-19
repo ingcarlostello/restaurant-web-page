@@ -9,7 +9,6 @@ const Categoria = ({
   category,
   drinkList,
   hotDogsList,
-  reviewBurgersList,
 }) => {
   const router = useRouter();
 
@@ -48,10 +47,6 @@ const Categoria = ({
     return infoBurger;
   });
 
-    console.log(burgersList);
-
-  console.log(hotDogsList);
-
   const allDataHotDogs = hotDogsList.map((hotDog) => {
     let infoHotDog = {
       category: hotDog.category.urlCategory,
@@ -80,7 +75,38 @@ const Categoria = ({
     return infoHotDog;
   });
 
+   const allDataDrinks = drinkList.map((drink) => {
+     console.log('--->', drink);
+     let infoDrink = {
+       category: drink.category?.urlCategory,
+       description: drink.description,
+       photo: drink.photo.url,
+       id: drink.id,
+       name: drink.drinkName,
+       price: drink.price,
+       urlFood: drink.urlFood,
+       points: drink.review_drinks?.map((stars) => {
+         return stars.value;
+       }),
+       reviews: drink.review_drinks?.map((reviews) => {
+         return {
+           reviews: reviews.description,
+           points: reviews.value,
+           title: reviews.title,
+           clientName: reviews.clientName,
+         };
+       }),
+     };
+     let suma =
+       infoDrink.points.length > 0 && infoDrink.points?.reduce(sumaEstrellas);
+     let promedio = suma / infoDrink.points?.length;
+
+     infoDrink.promedio = promedio;
+     return infoDrink;
+   });
+
   const listado = () => {
+    console.log("category.categoryName", category.categoryName);
     switch (category.categoryName) {
       case respu.burger:
         let allBurgers = allDataBurger.map((burger) => (
@@ -117,12 +143,17 @@ const Categoria = ({
         );
 
       case respu.drink:
-        let allDrinks = drinkList.map((drink) => (
+        let allDrinks = allDataDrinks.map((drink) => 
+         
+          (
           <div key={drink.id} className="mt-10">
-            <Card
+            <Card     
+              average={drink.promedio}
+              key={drink.id}
+              nameProduct={drink.name}
+              photo={drink.photo}
+              price={drink.price}
               urlProduct={drink.urlFood}
-              nameProduct={drink.drinkName}
-              photo={drink.photo.url}
             />
           </div>
         ));
@@ -183,8 +214,6 @@ export async function getStaticProps({ params: { urlCategory } }) {
   let urlListDrinks = `${process.env.API_URL}/drinks`;
   const responseListDrinks = await fetch(urlListDrinks);
   const drinkList = await responseListDrinks.json();
-
- 
 
   /**
    * *Como esta url: `${process.env.API_URL}/categories?urlCategory=${urlCategory}`; regresa 1 array de 1 solo item;

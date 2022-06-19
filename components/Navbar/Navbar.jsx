@@ -17,7 +17,7 @@ const Navbar = () => {
     };
     return (
       <>
-        <nav className="px-6 bg-white drop-shadow-lg">
+        <nav className="px-6 bg-slate-50 drop-shadow-lg font-nunito">
           <div className="max-w-7xl mx-auto">
             <div className="relative flex items-center justify-between h-16">
               {/* ---logo--- */}
@@ -32,8 +32,8 @@ const Navbar = () => {
                     <a
                       className={
                         router.pathname == "/"
-                          ? "p-3 text-white bg-red-500 rounded"
-                          : "p-3 text-black hover:bg-red-500 hover:text-white rounded"
+                          ? "p-3 text-white bg-red-500 rounded drop-shadow-md"
+                          : "p-3 text-black hover:bg-red-500 hover:text-white rounded drop-shadow-md"
                       }
                     >
                       <Link href="/">INICIO</Link>
@@ -42,8 +42,8 @@ const Navbar = () => {
                     <a
                       className={
                         router.pathname == "/categories"
-                          ? "p-3 text-white bg-red-500 rounded"
-                          : "p-3 text-black hover:bg-red-500 hover:text-white rounded"
+                          ? "p-3 text-white bg-red-500 rounded drop-shadow-md"
+                          : "p-3 text-black hover:bg-red-500 hover:text-white rounded drop-shadow-md"
                       }
                     >
                       <Link href="/categories">MENU</Link>
@@ -52,8 +52,8 @@ const Navbar = () => {
                     <a
                       className={
                         router.pathname == "/contact"
-                          ? "p-3 text-white bg-red-500 rounded"
-                          : "p-3 text-black hover:bg-red-500 hover:text-white rounded"
+                          ? "p-3 text-white bg-red-500 rounded drop-shadow-md"
+                          : "p-3 text-black hover:bg-red-500 hover:text-white rounded drop-shadow-md"
                       }
                     >
                       <Link href="/contact">CONTACTO</Link>
