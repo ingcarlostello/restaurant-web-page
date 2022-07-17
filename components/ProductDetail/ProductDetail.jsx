@@ -21,7 +21,6 @@ const ProductDetail = ({
 }) => {
   const [toggleModal, setToggleModal] = useState(false);
 
-  console.log("prodcut detail", category);
 
   const openModal = () => {
     if (toggleModal) {

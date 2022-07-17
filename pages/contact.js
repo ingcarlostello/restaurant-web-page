@@ -6,7 +6,7 @@ import { labels } from '../labels';
 
 const Contact = ({ contact }) => {
 
-  console.log(contact);
+
 
 
 

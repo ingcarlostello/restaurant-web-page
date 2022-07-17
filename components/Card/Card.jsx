@@ -7,6 +7,8 @@ import Link from 'next/link';
 import { currency } from '../../helper/currency';
 
 const Card = ({ urlProduct, nameProduct, photo, average, price }) => {
+
+  
   return (
     <>
       <div className="mb-6 mx-6 rounded-lg w-64 shadow-lg hover:shadow-xl transition duration-500">

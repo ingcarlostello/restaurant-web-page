@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 
 const Reviews = ({ openModal, toggleModal, productId, category }) => {
 
-  console.log('liena 12 category-->', category);
+
 
 
 

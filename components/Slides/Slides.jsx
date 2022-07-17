@@ -27,7 +27,7 @@ const Slides = () => {
 
   return (
     <>
-      <div className="px-8">
+      <div className="px-8" style={{height:'600px'}}>
         <Swiper
           autoplay={{
             delay: 10000,
