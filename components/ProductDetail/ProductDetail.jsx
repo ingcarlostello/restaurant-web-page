@@ -35,14 +35,14 @@ const ProductDetail = ({
       <div className="grid grid-cols-2">
         <div>
           <div className="p-20">
-            <img src={`${process.env.NEXT_PUBLIC_API_URL}${photo}`} />
+            <img className='rounded-lg' src={`${process.env.NEXT_PUBLIC_API_URL}${photo}`} />
           </div>
         </div>
         <div>
           <div className="p-20">
             <div>
               <h1 className="text-5xl font-bold">{productName}</h1>
-              <p className="text-3xl mt-4">{price}</p>
+              <p className="text-3xl mt-4">$ {price}</p>
               <div className="mt-4 flex">
                 <span>
                   <Rating
@@ -52,7 +52,7 @@ const ProductDetail = ({
                     readOnly
                   />
                 </span>
-                <span className="ml-2">{average?.toFixed(1)}</span>
+                <span className="ml-2">{isNaN(average) ? '' : average?.toFixed(1) }</span>
               </div>
               <p className="mt-8 whitespace-pre-line">{productDescription}</p>
               <div className="mt-12">

@@ -79,7 +79,7 @@ const Detail = ({ burgersList, choriPapaList, hotDogsList, arepasList, drinksLis
       }),
     };
 
-    let suma = infoChoriPapa.points.reduce(sumaEstrellas);
+    let suma = infoChoriPapa.points.reduce(sumaEstrellas, 0);
     let promedio = suma / infoChoriPapa.points.length;
 
     infoChoriPapa.promedio = promedio;
@@ -109,7 +109,7 @@ const Detail = ({ burgersList, choriPapaList, hotDogsList, arepasList, drinksLis
       }),
     };
 
-    let suma = infoBurger.points?.reduce(sumaEstrellas);
+    let suma = infoBurger.points?.reduce(sumaEstrellas, 0);
     let promedio = suma / infoBurger.points?.length;
 
     infoBurger.promedio = promedio;
@@ -138,7 +138,7 @@ const Detail = ({ burgersList, choriPapaList, hotDogsList, arepasList, drinksLis
       }),
     };
 
-    let suma = infoHotDog.points?.reduce(sumaEstrellas);
+    let suma = infoHotDog.points?.reduce(sumaEstrellas, 0);
     let promedio = suma / infoHotDog.points?.length;
     infoHotDog.promedio = promedio;
 
@@ -169,7 +169,7 @@ const Detail = ({ burgersList, choriPapaList, hotDogsList, arepasList, drinksLis
       })
     }
 
-    let suma = infoArepa.points.reduce(sumaEstrellas);
+    let suma = infoArepa.points.reduce(sumaEstrellas, 0);
     let promedio = suma / infoArepa.points.length;
 
     infoArepa.promedio = promedio;
@@ -199,7 +199,7 @@ const Detail = ({ burgersList, choriPapaList, hotDogsList, arepasList, drinksLis
         }
       })
     }
-    let suma = infoDrink.points.reduce(sumaEstrellas);
+    let suma = infoDrink.points.reduce(sumaEstrellas, 0);
     let promedio = suma / infoDrink.points.length;
 
     infoDrink.promedio = promedio;
@@ -229,7 +229,7 @@ const Detail = ({ burgersList, choriPapaList, hotDogsList, arepasList, drinksLis
         }
       })
     }
-    let suma = infoChicken.points.reduce(sumaEstrellas);
+    let suma = infoChicken.points.reduce(sumaEstrellas, 0);
     let promedio = suma / infoChicken.points.length;
 
     infoChicken.promedio = promedio;

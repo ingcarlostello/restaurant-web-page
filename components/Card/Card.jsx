@@ -8,6 +8,7 @@ import { currency } from '../../helper/currency';
 
 const Card = ({ urlProduct, nameProduct, photo, average, price }) => {
 
+    console.log('promedio', average?.toFixed(1));
   
   return (
     <>
@@ -35,7 +36,7 @@ const Card = ({ urlProduct, nameProduct, photo, average, price }) => {
                   readOnly
                 />
               </span>
-              <span>{average?.toFixed(1)}</span>
+              <span>{isNaN(average) ? '' : average?.toFixed(1) }</span>
             </div>
             <p className="text-xl text-center font-bold text-gray-700 ">
               {currency(price)}

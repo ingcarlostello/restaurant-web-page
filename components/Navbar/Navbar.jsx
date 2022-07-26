@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-const Navbar = () => {
+const Navbar = ({logoImage}) => {
    const router = useRouter();
     const [openMenuVertical, setOpenMenuVertical] = useState(false);
 
@@ -22,7 +22,7 @@ const Navbar = () => {
             <div className="relative flex items-center justify-between h-16">
               {/* ---logo--- */}
               <div className="bg-red-300 flex-shrink-0 flex items-center">
-                <div className="hidden lg:block h-8 w-auto">LOGO</div>
+                <img className="h-14 w-full" src={`${process.env.NEXT_PUBLIC_API_URL}${logoImage}`} alt="logo" />
               </div>
               {/* ---End logo--- */}
               {/* -----------------------------Begin Menu horizontal--------------------------------- */}

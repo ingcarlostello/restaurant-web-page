@@ -9,11 +9,6 @@ import { useRouter } from "next/router";
 
 const Reviews = ({ openModal, toggleModal, productId, category }) => {
 
-
-
-
-
-
   const [reviewForm, setReviewForm] = useState({
     clientName: "",
     title: "",
@@ -26,6 +21,15 @@ const Reviews = ({ openModal, toggleModal, productId, category }) => {
       id: productId
     },
     drink:{
+      id: productId
+    },
+    arepa:{
+      id: productId
+    },
+    potato: {
+      id: productId
+    },
+    chicken:{
       id: productId
     }
   });
@@ -55,6 +59,15 @@ const Reviews = ({ openModal, toggleModal, productId, category }) => {
       drink: {
         id: null,
       },
+      arepa:{
+        id: null
+      },
+      potato: {
+        id: null
+      },
+      chicken:{
+        id: null
+      }
     });
   };
 
@@ -117,6 +130,69 @@ const Reviews = ({ openModal, toggleModal, productId, category }) => {
         description: "",
         value: null,
         hot_dog: {
+          id: null,
+        },
+      });
+      openModal();
+    }
+
+    if (category === 'arepas') {
+      const feedback = fetch("http://localhost:1337/review-arepas", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(review),
+      });
+      setReviewForm({
+        clientName: "",
+        title: "",
+        description: "",
+        value: null,
+        arepa: {
+          id: null,
+        },
+      });
+      openModal();
+    }
+
+    if (category === 'chori-y-salchi-papas') {
+      const feedback = fetch("http://localhost:1337/review-potatoes", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(review),
+      });
+      setReviewForm({
+        clientName: "",
+        title: "",
+        description: "",
+        value: null,
+        potato: {
+          id: null,
+        },
+      });
+      openModal();
+    }
+
+    if (category === 'pollo') {
+      const feedback = fetch("http://localhost:1337/review-chikens", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(review),
+      });
+      setReviewForm({
+        clientName: "",
+        title: "",
+        description: "",
+        value: null,
+        chicken: {
           id: null,
         },
       });

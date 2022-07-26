@@ -89,19 +89,23 @@ const Categoria = ({
       name: arepa.arepaName,
       price: arepa.price,
       urlFood: arepa.urlFood,
-      points: arepa.review_arepas?.map((stars) => {
+      points: arepa?.review_arepas?.map((stars) => {
         return stars.value;
       }),
-      reviews: arepa.review_arepas.map((reviews) => {
+      reviews: arepa?.review_arepas.map((reviews) => {
         return reviews.description;
       }),
     };
-    let suma = infoArepa.points.reduce(sumaEstrellas);
-    let promedio = suma / infoArepa.points.length;
+   
+    let suma = infoArepa.points.reduce(sumaEstrellas, 0);
+    console.log('suma', suma);
+    let promedio = suma / infoArepa?.points?.length;
 
     infoArepa.promedio = promedio;
     return infoArepa;
   });
+
+  console.log('arepas', allDataArepas);
 
   const allDataBurger = burgersList?.map((burger) => {
     let infoBurger = {
@@ -118,7 +122,7 @@ const Categoria = ({
         return reviews.description;
       }),
     };
-    let suma = infoBurger.points.reduce(sumaEstrellas);
+    let suma = infoBurger?.points?.reduce(sumaEstrellas, 0);
     let promedio = suma / infoBurger.points.length;
 
     infoBurger.promedio = promedio;
@@ -176,7 +180,7 @@ const Categoria = ({
       }),
     };
     let suma =
-      infoDrink.points.length > 0 && infoDrink.points?.reduce(sumaEstrellas);
+      infoDrink.points.length > 0 && infoDrink.points?.reduce(sumaEstrellas, 0);
     let promedio = suma / infoDrink.points?.length;
 
     infoDrink.promedio = promedio;
@@ -251,7 +255,7 @@ const Categoria = ({
         ));
         return (
           <div className="grid gap-4 mt-9 place-items-center sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-            {allBurgers}
+            {allBurgers} 
           </div>
         );
 
@@ -293,12 +297,14 @@ const Categoria = ({
     }
   };
 
+  console.log('listado--->', listado());
+
   return (
     <>
       <div className="w-full h-64 text-6xl text-white bg-gray-600 grid place-items-center">
         {router.query.urlCategory}
       </div>
-      <div>{listado()}</div>
+      <div>{listado() === undefined ? <div className="flex justify-center text-2xl mt-48">No hay productos para esta categoría</div> : listado()}</div>
     </>
   );
 };

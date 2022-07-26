@@ -3,8 +3,7 @@ import '../styles/globals.css'
 import "swiper/css/bundle";
 import "/styles/styles.css"
 
-function MyApp({ Component, pageProps }) {
- 
+function MyApp({ Component, pageProps}, logo) {
   return (
     <Layout>
       <Component {...pageProps} />

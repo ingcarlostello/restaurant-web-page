@@ -5,8 +5,19 @@ import React from 'react';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import Head from 'next/head';
+import { useEffect } from 'react';
+import { getLogoImage } from '../../helper/urls';
+import { useState } from 'react';
 
 const Layout = ({children}) => {
+
+  const [logoImage, setLogoImage] = useState();
+
+  useEffect(() => {
+    getLogoImage().then(function (value) {
+      setLogoImage(value.Logo.url);
+    });
+  }, []);
   
     return (
       <div>
@@ -32,9 +43,13 @@ const Layout = ({children}) => {
             rel="stylesheet"
           />
         </Head>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <div className='min-h-screen relative'>
+          <Navbar logoImage={logoImage} />
+          <div className='pb-40'>{children}</div>
+          <div className='absolute w-full bottom-0 right-0'>
+            <Footer />
+          </div>
+        </div>
       </div>
     );
 };

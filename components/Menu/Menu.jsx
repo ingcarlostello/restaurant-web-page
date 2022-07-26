@@ -33,7 +33,7 @@ const Menu = ({ categories }) => {
                 <img
                   src={`${process.env.NEXT_PUBLIC_API_URL}${category.FotoCategoria.url}`}
                   alt={category.FotoCategoria.name}
-                  className="object-cover h-72"
+                  className="object-cover"
                 />
               </div>
             </div>

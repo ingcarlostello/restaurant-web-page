@@ -21,6 +21,7 @@ const Slides = () => {
 
   useEffect(() => {
     getCarruselImage().then(function (value) {
+      console.log('carrusel', value);
      setCarouselPhoto(value.Carousel);
     });
   }, [])  

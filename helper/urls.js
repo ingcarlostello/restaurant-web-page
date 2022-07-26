@@ -1,5 +1,6 @@
 export const server = "http://localhost:1337";
 export const getCarrusel = `${server}/carousel`;
+export const logoUrl = `${server}/logo`;
 
 
 export const getCarruselImage = async () => {
@@ -29,3 +30,9 @@ export const nameProduct = (array) => {
     return (resul = y);
   }
 };
+
+export const getLogoImage = async () => {
+  let response = await fetch(logoUrl);
+  let result = await response.json();
+  return result
+}

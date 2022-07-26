@@ -5,17 +5,12 @@ import ContactInfoCard from '../components/ContactInfoCard/ContactInfoCard';
 import { labels } from '../labels';
 
 const Contact = ({ contact }) => {
-
-
-
-
-
   return (
     <>
       <div className="w-full h-64 text-6xl text-white bg-gray-600 grid place-items-center">
         <p>{labels.contacto}</p>
       </div>
-      <div className="grid grid-cols-4 gap-11 px-8 py-28 bg-slate-50">
+      <div className="grid grid-cols-4 gap-11 px-8 py-28">
         <div className="bg-white p-4 rounded-lg drop-shadow-lg flex items-center justify-center">
         
             <div>
