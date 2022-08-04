@@ -74,7 +74,7 @@ const Categoria = ({
         return reviews.description;
       }),
     };
-    let suma = infoChoriPapa.points?.reduce(sumaEstrellas);
+    let suma = infoChoriPapa.points?.reduce(sumaEstrellas, 0);
     let promedio = suma / infoChoriPapa.points?.length;
 
     infoChoriPapa.promedio = promedio;
@@ -98,14 +98,14 @@ const Categoria = ({
     };
    
     let suma = infoArepa.points.reduce(sumaEstrellas, 0);
-    console.log('suma', suma);
+
     let promedio = suma / infoArepa?.points?.length;
 
     infoArepa.promedio = promedio;
     return infoArepa;
   });
 
-  console.log('arepas', allDataArepas);
+
 
   const allDataBurger = burgersList?.map((burger) => {
     let infoBurger = {
@@ -162,7 +162,7 @@ const Categoria = ({
     let infoDrink = {
       category: drink.category?.urlCategory,
       description: drink.description,
-      photo: drink.photo.url,
+      photo: drink.photo?.url,
       id: drink.id,
       name: drink.drinkName,
       price: drink.price,
@@ -297,7 +297,6 @@ const Categoria = ({
     }
   };
 
-  console.log('listado--->', listado());
 
   return (
     <>

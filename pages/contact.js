@@ -1,51 +1,120 @@
 /* eslint-disable @next/next/no-img-element */
-import Link from 'next/link';
-import React from 'react';
-import ContactInfoCard from '../components/ContactInfoCard/ContactInfoCard';
-import { labels } from '../labels';
+import Link from "next/link";
+import React from "react";
+import ContactInfoCard from "../components/ContactInfoCard/ContactInfoCard";
+import Layout from "../components/Layout/Layout";
+import { labels } from "../labels";
 
 const Contact = ({ contact }) => {
+
   return (
     <>
       <div className="w-full h-64 text-6xl text-white bg-gray-600 grid place-items-center">
         <p>{labels.contacto}</p>
       </div>
-      <div className="grid grid-cols-4 gap-11 px-8 py-28">
-        <div className="bg-white p-4 rounded-lg drop-shadow-lg flex items-center justify-center">
-        
+      <div className="cursor-pointer md:grid grid-cols-3 lg:grid grid-cols-4 gap-11 px-8 py-28">
+
+        <div className="cursor-pointer mb-8 bg-white p-4 rounded-lg drop-shadow-lg flex items-center justify-center">
+          <div className="text-center">
+            <i className="fa-solid fa-location-dot text-2xl mr-2 text-red-500"></i>
             <div>
-              <i className="fa-solid fa-location-dot text-2xl mr-2 text-red-500"></i>
-              <a href={`${contact.linkMap}`} target="_blank" rel="noopener noreferrer">
+              <a
+                href={`${contact.linkMap}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {contact.address}
               </a>
             </div>
-       
+          </div>
         </div>
 
-        <div className="bg-white p-4 rounded-lg drop-shadow-lg flex items-center justify-center">
-          <i className="fa-brands fa-whatsapp text-2xl mr-2 text-red-500"></i>
-          {contact.whatsapp1}
+        {contact.whatsapp1 === "0" ? null : (
+          <div className="cursor-pointer mb-8 bg-white p-4 rounded-lg drop-shadow-lg text-center">
+            <div>
+              <i className="fa-brands fa-whatsapp text-2xl mr-2 text-red-500"></i>
+            </div>
+            <div>
+              <a
+                href={`https://wa.me/${contact.whatsapp1}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {contact.whatsapp1}
+              </a>
+            </div>
+          </div>
+        )}
+
+        {contact.whatsapp2 === "0" ? null : (
+          <div className="cursor-pointer mb-8 bg-white p-4 rounded-lg drop-shadow-lg text-center">
+            <div>
+              <i className="fa-brands fa-whatsapp text-2xl mr-2 text-red-500"></i>
+            </div>
+            <div>
+              <a
+                href={`https://wa.me/${contact.whatsapp2}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {contact.whatsapp2}
+              </a>
+            </div>
+          </div>
+        )}
+
+        <div className="cursor-pointer mb-8 bg-white p-4 rounded-lg drop-shadow-lg flex items-center justify-center">
+          <a
+            href={`${contact.facebook}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i className="fa-brands fa-facebook text-2xl mr-2 text-red-500"></i>
+          </a>
         </div>
 
-        <div className="bg-white p-4 rounded-lg drop-shadow-lg flex items-center justify-center">
-          <i className="fa-brands fa-whatsapp text-2xl mr-2 text-red-500"></i>
-          {contact.whatsapp2}
+        <div className="cursor-pointer mb-8 bg-white p-4 rounded-lg drop-shadow-lg flex items-center justify-center">
+          <a
+            href={`${contact.instagram}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i className="fa-brands fa-instagram text-2xl mr-2 text-red-500"></i>
+          </a>
         </div>
 
-        <div className="bg-white p-4 rounded-lg drop-shadow-lg flex items-center justify-center">
-          <i className="fa-brands fa-facebook text-2xl mr-2 text-red-500"></i>
-          {contact.facebook}
-        </div>
+        {contact.opening1 && (
+          <div className="cursor-pointer mb-8 bg-white p-4 rounded-lg drop-shadow-lg text-center">
+            <div>
+              <i className="fa-regular fa-clock text-2xl mr-2 text-red-500"></i>
+            </div>
+            <div>
+              {contact.opening1}
+            </div>
+          </div>
+        )}
 
-        <div className="bg-white p-4 rounded-lg drop-shadow-lg flex items-center justify-center">
-          <i className="fa-brands fa-instagram text-2xl mr-2 text-red-500"></i>
-          {contact.insragram}
-        </div>
+        {contact.opening2 && (
+          <div className="cursor-pointer mb-8 bg-white p-4 rounded-lg drop-shadow-lg text-center">
+            <div>
+              <i className="fa-regular fa-clock text-2xl mr-2 text-red-500"></i>
+            </div>
+            <div>
+              {contact.opening2}
+            </div>
+          </div>
+        )}
 
-        <div className="bg-white p-4 rounded-lg drop-shadow-lg flex items-center justify-center">
-          <i className="fa-regular fa-clock text-2xl mr-2 text-red-500"></i>
-          {contact.opening1}
-        </div>
+        {contact.opening3 && (
+          <div className="cursor-pointer mb-8 bg-white p-4 rounded-lg drop-shadow-lg text-center">
+            <div>
+              <i className="fa-regular fa-clock text-2xl mr-2 text-red-500"></i>
+            </div>
+            <div>
+              {contact.opening3}
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

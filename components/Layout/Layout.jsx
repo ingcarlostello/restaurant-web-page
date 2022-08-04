@@ -20,7 +20,7 @@ const Layout = ({children}) => {
   }, []);
   
     return (
-      <div>
+      <div className='relative min-h-screen'>
         <Head>
           <title>My page title</title>
           <meta
@@ -33,23 +33,21 @@ const Layout = ({children}) => {
           />
           <link
             rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+            //href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
           />
 
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          
           <link
             href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400&display=swap"
             rel="stylesheet"
           />
         </Head>
-        <div className='min-h-screen relative'>
-          <Navbar logoImage={logoImage} />
-          <div className='pb-40'>{children}</div>
-          <div className='absolute w-full bottom-0 right-0'>
-            <Footer />
-          </div>
-        </div>
+        <Navbar logoImage={logoImage} />
+        <div className='pb-40'>{children}</div>
+        <Footer />
       </div>
     );
 };

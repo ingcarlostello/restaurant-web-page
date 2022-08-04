@@ -206,8 +206,8 @@ const Reviews = ({ openModal, toggleModal, productId, category }) => {
       <div
         className={`${
           toggleModal
-            ? "fixed z-10 inset-0 overflow-y-auto"
-            : "fixed z-10 inset-0 overflow-y-auto hidden"
+            ? "fixed inset-0 overflow-y-auto"
+            : "fixed inset-0 overflow-y-auto hidden"
         }`}
         aria-labelledby="modal-title"
         role="dialog"

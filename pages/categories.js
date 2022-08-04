@@ -1,6 +1,7 @@
 // @components
-import Menu from '../components/Menu/Menu';
-import { labels } from '../labels';
+import Layout from "../components/Layout/Layout";
+import Menu from "../components/Menu/Menu";
+import { labels } from "../labels";
 
 const Categories = ({ categories }) => {
   return (

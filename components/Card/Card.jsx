@@ -7,12 +7,10 @@ import Link from 'next/link';
 import { currency } from '../../helper/currency';
 
 const Card = ({ urlProduct, nameProduct, photo, average, price }) => {
-
-    console.log('promedio', average?.toFixed(1));
   
   return (
     <>
-      <div className="mb-6 mx-6 rounded-lg w-64 shadow-lg hover:shadow-xl transition duration-500">
+      <div className="mb-6 mx-6 w-64 shadow-lg hover:shadow-xl transition duration-500">
         <div className="rounded-lg flex justify-center items-center">
           <div className="rounded-t-lg h-56 w-full flex justify-center items-center overflow-hidden">
             <img

@@ -7,7 +7,6 @@ const ContactInfoCard = ({contactInfo}) => {
           <div className="flex-grow p-3">
             <div className="text-gray-500 text-center">
               <a>
-                {/* <i className={`${data.socialNetworkIcon} text-5xl`}></i> */}
                 <i className="fa-solid fa-book-user text-5xl"></i>
                 <div className="font-semibold text-gray-700">
                   {contactInfo}

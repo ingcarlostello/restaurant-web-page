@@ -89,7 +89,7 @@ const Detail = ({ burgersList, choriPapaList, hotDogsList, arepasList, drinksLis
   const allDataBurger = burgersList.map((burger) => {
 
     let infoBurger = {
-      category: burger.category.urlCategory,
+      category: burger.category?.urlCategory,
       description: burger.description,
       photo: burger.photo.url,
       id: burger.id,

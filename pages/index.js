@@ -1,16 +1,17 @@
 // @components
 import Head from "next/head";
+import Layout from "../components/Layout/Layout";
 import Menu from "../components/Menu/Menu";
 import Slides from "../components/Slides/Slides";
-
 
 export default function Home({ categories }) {
   return (
     <>
-      <div className="bg-slate-50 pb-28 font-nunito">
+      {/* <Slides /> */}
+
         <Slides />
-        <Menu categories={categories} />
-      </div>
+
+      <Menu categories={categories} />
     </>
   );
 }

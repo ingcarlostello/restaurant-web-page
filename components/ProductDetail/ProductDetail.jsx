@@ -35,7 +35,7 @@ const ProductDetail = ({
       <div className="grid grid-cols-2">
         <div>
           <div className="p-20">
-            <img className='rounded-lg' src={`${process.env.NEXT_PUBLIC_API_URL}${photo}`} />
+            <img className='rounded-3xl shadow-xl' src={`${process.env.NEXT_PUBLIC_API_URL}${photo}`} />
           </div>
         </div>
         <div>

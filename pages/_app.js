@@ -6,7 +6,9 @@ import "/styles/styles.css"
 function MyApp({ Component, pageProps}, logo) {
   return (
     <Layout>
-      <Component {...pageProps} />
+      <div>
+        <Component {...pageProps} />
+      </div>      
     </Layout>
   ); 
 }
