@@ -2,6 +2,7 @@ import { Rating } from '@mui/material';
 import React from 'react';
 
 const Comment = ({ points, description, titleReview, clientName }) => {
+
   return (
     <div className="bg-white rounded-lg p-6 shadow-lg mb-4">
       <div className="flex justify-between mb-1">

@@ -8,30 +8,17 @@ import Rating from "@mui/material/Rating";
 import { useRouter } from "next/router";
 
 const Reviews = ({ openModal, toggleModal, productId, category }) => {
-
   const [reviewForm, setReviewForm] = useState({
     clientName: "",
     title: "",
     description: "",
     value: 0,
-    burger: {
-      id: productId,
-    },
-    hot_dog: {
-      id: productId
-    },
-    drink:{
-      id: productId
-    },
-    arepa:{
-      id: productId
-    },
-    potato: {
-      id: productId
-    },
-    chicken:{
-      id: productId
-    }
+    burger: productId,
+    hot_dog: productId,
+    drink: productId,
+    arepa: productId,
+    potato: productId,
+    chicken: productId,
   });
 
   const { description, value, title, clientName } = reviewForm;
@@ -50,52 +37,19 @@ const Reviews = ({ openModal, toggleModal, productId, category }) => {
       title: "",
       description: "",
       value: null,
-      burger: {
-        id: null,
-      },
-      hot_dog: {
-        id: null,
-      },
-      drink: {
-        id: null,
-      },
-      arepa:{
-        id: null
-      },
-      potato: {
-        id: null
-      },
-      chicken:{
-        id: null
-      }
+      
+      arepa: productId,
+      burger: productId,
+      chicken: productId,
+      drink: productId,
+      hot_dog: productId,
+      potato: productId,
     });
   };
 
   const sendReview = async (review) => {
-
-    if(category === 'bebidas'){
-       const feedback = fetch("http://localhost:1337/review-drinks", {
-         method: "POST",
-         headers: {
-           "Content-Type": "application/json",
-           Accept: "application/json",
-         },
-         body: JSON.stringify(review),
-       });
-       setReviewForm({
-         clientName: "",
-         title: "",
-         description: "",
-         value: null,
-         drink: {
-           id: null,
-         },
-       });
-       openModal();
-    }
-
-    if (category === 'hamburguesas') {
-      const feedback = fetch("http://localhost:1337/review-burgers", {
+    if (category === "bebidas") {
+      const feedback = fetch(`${process.env.NEXT_PUBLIC_API_URL}/review-drinks`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -108,15 +62,36 @@ const Reviews = ({ openModal, toggleModal, productId, category }) => {
         title: "",
         description: "",
         value: null,
-        buerger: {
+        drink: {
           id: null,
         },
       });
       openModal();
-    };
-    
-    if (category === 'perros') {
-      const feedback = fetch("http://localhost:1337/review-hot-dogs", {
+    }
+
+    if (category === "hamburguesas") {
+      const feedback = fetch(`${process.env.NEXT_PUBLIC_API_URL}/review-burgers`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(review),
+      });
+      setReviewForm({
+        clientName: "",
+        title: "",
+        description: "",
+        value: null,
+        burger: {
+          id: null,
+        },
+      });
+      openModal();
+    }
+
+    if (category === "perros") {
+      const feedback = fetch(`${process.env.NEXT_PUBLIC_API_URL}/review-hot-dogs`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -136,8 +111,8 @@ const Reviews = ({ openModal, toggleModal, productId, category }) => {
       openModal();
     }
 
-    if (category === 'arepas') {
-      const feedback = fetch("http://localhost:1337/review-arepas", {
+    if (category === "arepas") {
+      const feedback = fetch(`${process.env.NEXT_PUBLIC_API_URL}/review-arepas`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -157,8 +132,8 @@ const Reviews = ({ openModal, toggleModal, productId, category }) => {
       openModal();
     }
 
-    if (category === 'chori-y-salchi-papas') {
-      const feedback = fetch("http://localhost:1337/review-potatoes", {
+    if (category === "chori-y-salchi-papas") {
+      const feedback = fetch(`${process.env.NEXT_PUBLIC_API_URL}/review-potatoes`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -178,8 +153,8 @@ const Reviews = ({ openModal, toggleModal, productId, category }) => {
       openModal();
     }
 
-    if (category === 'pollo') {
-      const feedback = fetch("http://localhost:1337/review-chikens", {
+    if (category === "pollo") {
+      const feedback = fetch(`${process.env.NEXT_PUBLIC_API_URL}/review-chikens`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -198,7 +173,6 @@ const Reviews = ({ openModal, toggleModal, productId, category }) => {
       });
       openModal();
     }
-     
   };
 
   return (

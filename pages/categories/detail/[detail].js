@@ -12,6 +12,7 @@ import { getListOfFood, getUrlProduct } from "../../../helper/urls";
 import { sumaEstrellas } from "../../../helper/starAverage";
 
 const Detail = ({ burgersList, choriPapaList, hotDogsList, arepasList, drinksList, chickensList}) => {
+
   const router = useRouter();
 
   const [toggleModal, setToggleModal] = useState(true);
@@ -87,6 +88,9 @@ const Detail = ({ burgersList, choriPapaList, hotDogsList, arepasList, drinksLis
   });
 
   const allDataBurger = burgersList.map((burger) => {
+    
+
+
 
     let infoBurger = {
       category: burger.category?.urlCategory,

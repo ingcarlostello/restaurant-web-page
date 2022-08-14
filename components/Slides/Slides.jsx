@@ -24,6 +24,7 @@ const Slides = () => {
     });
   }, []);
 
+
   return (
     <>
       {carouselPhoto?.length === 0 ? (

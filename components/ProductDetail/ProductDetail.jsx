@@ -8,6 +8,8 @@ import { Rating } from '@mui/material';
 import Comment from '../Comments/Comment';
 import Reviews from '../Reviews/Reviews';
 
+import { currency } from '../../helper/currency';
+
 
 const ProductDetail = ({
   average,
@@ -19,8 +21,8 @@ const ProductDetail = ({
   productName,
   reviews,
 }) => {
-  const [toggleModal, setToggleModal] = useState(false);
 
+  const [toggleModal, setToggleModal] = useState(false);
 
   const openModal = () => {
     if (toggleModal) {
@@ -42,7 +44,7 @@ const ProductDetail = ({
           <div className="p-20">
             <div>
               <h1 className="text-5xl font-bold">{productName}</h1>
-              <p className="text-3xl mt-4">$ {price}</p>
+              <p className="text-3xl mt-4">{currency(price)}</p>
               <div className="mt-4 flex">
                 <span>
                   <Rating

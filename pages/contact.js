@@ -1,8 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import Link from "next/link";
 import React from "react";
-import ContactInfoCard from "../components/ContactInfoCard/ContactInfoCard";
-import Layout from "../components/Layout/Layout";
 import { labels } from "../labels";
 
 const Contact = ({ contact }) => {
@@ -29,7 +26,7 @@ const Contact = ({ contact }) => {
           </div>
         </div>
 
-        {contact.whatsapp1 === "0" ? null : (
+        {contact.whatsapp1 === "0" || contact.whatsapp2 === null ? null : (
           <div className="cursor-pointer mb-8 bg-white p-4 rounded-lg drop-shadow-lg text-center">
             <div>
               <i className="fa-brands fa-whatsapp text-2xl mr-2 text-red-500"></i>
@@ -46,7 +43,7 @@ const Contact = ({ contact }) => {
           </div>
         )}
 
-        {contact.whatsapp2 === "0" ? null : (
+        {contact.whatsapp2 === "0" || contact.whatsapp2 === null ? null : (
           <div className="cursor-pointer mb-8 bg-white p-4 rounded-lg drop-shadow-lg text-center">
             <div>
               <i className="fa-brands fa-whatsapp text-2xl mr-2 text-red-500"></i>
@@ -73,7 +70,7 @@ const Contact = ({ contact }) => {
           </a>
         </div>
 
-        <div className="cursor-pointer mb-8 bg-white p-4 rounded-lg drop-shadow-lg flex items-center justify-center">
+        {contact.instagram === '' || contact.instagram === undefined ? null : (<div className="cursor-pointer mb-8 bg-white p-4 rounded-lg drop-shadow-lg flex items-center justify-center">
           <a
             href={`${contact.instagram}`}
             target="_blank"
@@ -81,7 +78,10 @@ const Contact = ({ contact }) => {
           >
             <i className="fa-brands fa-instagram text-2xl mr-2 text-red-500"></i>
           </a>
-        </div>
+        </div>)
+        
+        }
+        
 
         {contact.opening1 && (
           <div className="cursor-pointer mb-8 bg-white p-4 rounded-lg drop-shadow-lg text-center">

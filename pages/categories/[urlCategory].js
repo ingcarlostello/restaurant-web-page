@@ -19,6 +19,7 @@ const Categoria = ({
 }) => {
   const router = useRouter();
 
+
   const allCategories = () => {
     const arepa       = arepasList?.map(getCategoryName);
     const burger      = burgersList?.map(getCategoryName);
@@ -52,7 +53,7 @@ const Categoria = ({
         return reviews.description;
       }),
     };
-    let suma = infoChiken.points?.reduce(sumaEstrellas);
+    let suma = infoChiken.points?.reduce(sumaEstrellas, 0);
     let promedio = suma / infoChiken.points?.length;
 
     infoChiken.promedio = promedio;
@@ -338,7 +339,7 @@ export async function getStaticProps({ params: { urlCategory } }) {
 
   let urlListBurgers = `${process.env.API_URL}/burgers`;
   const responseListBurgers = await fetch(urlListBurgers);
-  const burgersList = await responseListBurgers.json();
+  const burgersList = await responseListBurgers?.json();
 
   let urlListHotDogs = `${process.env.API_URL}/hot-dogs`;
   const responseListHotDogs = await fetch(urlListHotDogs);

@@ -17,7 +17,6 @@ const Navbar = ({ logoImage }) => {
     }
   };
 
-
   return (
     <>
       <nav className="z-40 px-6 bg-slate-50 drop-shadow-lg font-nunito">
@@ -36,35 +35,41 @@ const Navbar = ({ logoImage }) => {
             <div className="flex-1 flex justify-between sm:justify-center">
               <div className="sm:block">
                 <div className="flex space-x-4 hidden sm:block">
-                  <a
-                    className={
-                      router.pathname == "/"
-                        ? "p-3 text-white bg-red-500 rounded drop-shadow-md"
-                        : "p-3 text-black hover:bg-red-500 hover:text-white rounded drop-shadow-md"
-                    }
-                  >
-                    <Link href="/">INICIO</Link>
-                  </a>
+                  <Link href="/">
+                    <a
+                      className={
+                        router.pathname == "/"
+                          ? "p-3 text-white bg-red-500 rounded drop-shadow-md"
+                          : "p-3 text-black hover:bg-red-500 hover:text-white rounded drop-shadow-md"
+                      }
+                    >
+                      INICIO
+                    </a>
+                  </Link>
 
-                  <a
-                    className={
-                      router.pathname == "/categories"
-                        ? "p-3 text-white bg-red-500 rounded drop-shadow-md"
-                        : "p-3 text-black hover:bg-red-500 hover:text-white rounded drop-shadow-md"
-                    }
-                  >
-                    <Link href="/categories">MENU</Link>
-                  </a>
+                  <Link href="/categories">
+                    <a
+                      className={
+                        router.pathname == "/categories"
+                          ? "p-3 text-white bg-red-500 rounded drop-shadow-md"
+                          : "p-3 text-black hover:bg-red-500 hover:text-white rounded drop-shadow-md"
+                      }
+                    >
+                      MENU
+                    </a>
+                  </Link>
 
-                  <a
-                    className={
-                      router.pathname == "/contact"
-                        ? "p-3 text-white bg-red-500 rounded drop-shadow-md"
-                        : "p-3 text-black hover:bg-red-500 hover:text-white rounded drop-shadow-md"
-                    }
-                  >
-                    <Link href="/contact">CONTACTO</Link>
-                  </a>
+                  <Link href="/contact">
+                    <a
+                      className={
+                        router.pathname == "/contact"
+                          ? "p-3 text-white bg-red-500 rounded drop-shadow-md"
+                          : "p-3 text-black hover:bg-red-500 hover:text-white rounded drop-shadow-md"
+                      }
+                    >
+                      CONTACTO
+                    </a>
+                  </Link>
                 </div>
               </div>
               <button
@@ -99,7 +104,7 @@ const Navbar = ({ logoImage }) => {
                 <nav className="grid gap-y-8">
                   <Link
                     passHref
-                    // onClick={handleMenuVertical}
+                    onClick={handleMenuVertical}
                     href="/"
                     className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
                   >

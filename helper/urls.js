@@ -1,4 +1,6 @@
-export const server = "http://localhost:1337";
+//export const server = "http://localhost:1337";
+//export const server = "http://localhost:8000";
+export const server = `${process.env.NEXT_PUBLIC_API_URL}`
 export const getCarrusel = `${server}/carousel`;
 export const logoUrl = `${server}/logo`;
 export const socialMedia = `${server}/contact`;
@@ -33,8 +35,12 @@ export const nameProduct = (array) => {
 };
 
 export const getLogoImage = async () => {
+  
   let response = await fetch(logoUrl);
+
+  
   let result = await response.json();
+
   return result
 }
 
